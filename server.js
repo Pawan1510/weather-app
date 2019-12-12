@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 
+const port = process.env.PORT || 8000;
 var app = express();
 
 app.set('view engine','ejs');
@@ -15,7 +16,7 @@ app.get('/', function(req,res) {
 
   request(url,function(error, reponse, body){
     weather_json = JSON.parse(body);
-    
+
 
     var weather = {
       city : city,
@@ -40,4 +41,4 @@ app.post('/', function name(req,res) {
 
 //current city
 //http://api.openweathermap.org/data/2.5/weather?q=ambala&APPID=271d1234d3f497eed5b1d80a07b3fcd1&units=metric
-app.listen(8000);
+app.listen(port);
